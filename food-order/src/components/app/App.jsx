@@ -5,13 +5,10 @@ import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
 
 export function App() {
-  const tabItems = restaurants;
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeRestaurant = restaurants[activeIndex];
-  const handleTabChange = (activeId) => {
-    const index = restaurants.findIndex((r) => r.id === activeId);
-    setActiveIndex(index);
-  };
+  const [activeId, setActiveId] = useState(restaurants[0].id);
+  const activeRestaurant = restaurants.find(
+    (restaurant) => restaurant.id === activeId
+  );
 
   if (!restaurants.length) {
     return <p>No restaurants</p>;
@@ -20,9 +17,9 @@ export function App() {
   return (
     <Layout>
       <Tabs
-        activeId={tabItems[activeIndex].id}
-        items={tabItems}
-        onChange={handleTabChange}
+        activeId={activeRestaurant.id}
+        items={restaurants}
+        onChange={setActiveId}
       />
       <Restaurant
         key={activeRestaurant.id}
