@@ -3,6 +3,7 @@ import { Restaurant } from "../restaurant/restaurant";
 import { Tabs } from "../Tabs/Tabs";
 import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
+import { ScrollProgress } from "../scrollProgress/ScrollProgress";
 
 export function App() {
   const [activeId, setActiveId] = useState(restaurants[0].id);
@@ -16,10 +17,29 @@ export function App() {
 
   return (
     <Layout>
+      <ScrollProgress />
       <Tabs
         activeId={activeRestaurant.id}
         items={restaurants}
         onChange={setActiveId}
+      />
+      <Restaurant
+        key={activeRestaurant.id}
+        name={activeRestaurant.name}
+        menu={activeRestaurant.menu}
+        reviews={activeRestaurant.reviews}
+      />
+      <Restaurant
+        key={activeRestaurant.id}
+        name={activeRestaurant.name}
+        menu={activeRestaurant.menu}
+        reviews={activeRestaurant.reviews}
+      />
+      <Restaurant
+        key={activeRestaurant.id}
+        name={activeRestaurant.name}
+        menu={activeRestaurant.menu}
+        reviews={activeRestaurant.reviews}
       />
       <Restaurant
         key={activeRestaurant.id}
