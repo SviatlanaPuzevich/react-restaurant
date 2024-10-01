@@ -4,17 +4,7 @@ export function ScrollProgress() {
   const [width, setWidth] = useState("0");
   useEffect(() => {
     const handleScroll = () => {
-      let scrollTop = window.scrollY;
-      let docHeight = document.body.offsetHeight;
-      let winHeight = window.innerHeight;
-      let scrollPercent = Math.min(
-        1,
-        Math.max(0, scrollTop / (docHeight - winHeight))
-      );
-      let width = Math.round(scrollPercent * 100) + "%";
-      setWidth(width);
-      console.log(scrollPercent);
-      console.log(width);
+      setWidth(getScrollPercent() + "%");
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -34,4 +24,15 @@ export function ScrollProgress() {
       ></div>
     </div>
   );
+}
+
+function getScrollPercent() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.offsetHeight;
+  const winHeight = window.innerHeight;
+  const scrollPercent = Math.min(
+    1,
+    Math.max(0, scrollTop / (docHeight - winHeight))
+  );
+  return Math.round(scrollPercent * 100);
 }

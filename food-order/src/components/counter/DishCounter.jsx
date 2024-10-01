@@ -2,7 +2,7 @@ import { Counter } from "./Counter";
 import { useState } from "react";
 
 export function DishCounter() {
-  let [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   const increase = () => {
     setCount((count) => ++count);
   };
