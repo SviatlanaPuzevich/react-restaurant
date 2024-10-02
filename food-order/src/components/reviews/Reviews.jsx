@@ -1,4 +1,5 @@
 import { Review } from "./Review";
+import { ReviewForm } from "./ReviewForm";
 
 export function Reviews({ reviews }) {
   const header = reviews.length > 0 ? "Reviews" : "No reviews";
@@ -8,6 +9,7 @@ export function Reviews({ reviews }) {
       {reviews.map((review) => (
         <Review key={review.id} review={review} />
       ))}
+      <ReviewForm/>
     </>
   );
 }
