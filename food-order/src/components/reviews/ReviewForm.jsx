@@ -1,5 +1,7 @@
 import { Counter } from "../counter/Counter";
 import { useReviewForm } from "./ReviewFormReducer";
+import styles from "./reviews.module.css";
+import classNames from "classnames";
 
 export function ReviewForm() {
   const {
@@ -11,28 +13,41 @@ export function ReviewForm() {
     handleDecrease,
   } = useReviewForm();
   return (
-    <form>
-      <label>
-        Name:
-        <input value={review.user} onChange={handleSetUser} />
-      </label>
-      <label>
-        Comment:
-        <textarea
-          placeholder="your comment..."
-          value={review.text}
-          onChange={handleSetText}
+    <div className={styles.reviewCard}>
+      <form>
+        <div className={classNames(styles.formItem, styles.commentContainer)}>
+          <label className={styles.label}>Name:</label>
+          <input
+            className={styles.comment}
+            value={review.user}
+            onChange={handleSetUser}
+          />
+          <label className={styles.label}>Comment:</label>
+          <textarea
+            className={styles.comment}
+            placeholder="your comment..."
+            value={review.text}
+            onChange={handleSetText}
+          />
+        </div>
+        <Counter
+          count={review.rating}
+          decrease={handleDecrease}
+          increase={handleIncrease}
         />
-      </label>
-      <Counter
-        count={review.rating}
-        decrease={handleDecrease}
-        increase={handleIncrease}
-      />
-      <input type="submit" value="Save" />
-      <button type="button" onClick={clearReview}>
-        Clear
-      </button>
-    </form>
+        <div className={styles.formItem}>
+          <button type="submit" className={styles.submitButton}>
+            Save
+          </button>
+          <button
+            className={styles.submitButton}
+            type="button"
+            onClick={clearReview}
+          >
+            Clear
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

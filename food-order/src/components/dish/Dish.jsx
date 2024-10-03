@@ -1,12 +1,13 @@
-
-import {DishCounter} from "../counter/DishCounter";
+import { DishCounter } from "../counter/DishCounter";
+import styles from "./dish.module.css";
 
 export function Dish({ dish }) {
   return (
-    <div>
+    <div className={styles.card}>
       <h3>{dish.name}</h3>
       <div>{dish.ingredients.join(", ")}</div>
-      <DishCounter/>
+      <div className={styles.price}>{dish.price}</div>
+      <DishCounter />
     </div>
   );
 }

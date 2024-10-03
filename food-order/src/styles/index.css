@@ -1,0 +1,23 @@
+@import "../../node_modules/normalize.css/normalize.css";
+
+:root {
+    --black: #1d1d1d;
+    --white: #ffffff;
+    --orange: #e4661e;
+    --orange-light: #f0894e;
+    --pink: #fff0db;
+    --yellow: #f0ad4e;
+    --yellow-light: #ffd25d;
+    --grey: #e5e5e5;
+    --green: #49ab39;
+    --input-border: #c4c4c4;
+  }
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }

@@ -1,0 +1,20 @@
+.container {
+    display: grid;
+    grid: 50px 1fr auto/ minmax(0, 200px) 1fr minmax(0, 200px);
+    min-height: 100vh;
+}
+
+.header {
+    grid-column: 1/4;
+    background-color: var(--black);
+}
+
+.main {
+    grid-column: 2/3;
+    background-color: bisque;
+}
+
+.footer {
+    grid-column: 1/4;
+    background-color: cadetblue;
+}

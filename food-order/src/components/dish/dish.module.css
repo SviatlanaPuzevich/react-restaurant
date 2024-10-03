@@ -1,0 +1,14 @@
+.card{
+    border: 1px solid var(--grey);
+    background-color: var(--white);
+    color: var(--black);
+    padding: 20px;
+    margin: 10px;
+}
+
+.price {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--yellow);
+}
