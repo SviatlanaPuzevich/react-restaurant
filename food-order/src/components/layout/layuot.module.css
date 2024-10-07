@@ -36,3 +36,9 @@
     font-weight: bold;
     text-align: center;
 }
+
+.userName {
+    color: var(--yellow);
+    font-weight: bold;
+    padding: 0 15px;
+}

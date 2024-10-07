@@ -1,5 +1,5 @@
 import { ThemeContext } from ".";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import { useState } from "react";
 
 export const DARK_THEME = "dark";
@@ -22,5 +22,3 @@ export function ThemeContextProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
-
-export const useTheme = () => useContext(ThemeContext);

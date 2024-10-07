@@ -1,4 +1,5 @@
-import { useTheme, DARK_THEME } from "../themeContex/ThemeContext";
+import { useTheme } from "../themeContex/useThemeContext";
+import { DARK_THEME } from "../themeContex/ThemeContext";
 import styles from "./themeButton.module.css";
 import classNames from "classnames";
 

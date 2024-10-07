@@ -5,6 +5,7 @@ import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
 import { ScrollProgress } from "../scrollProgress/ScrollProgress";
 import { ThemeContextProvider } from "../themeContex/ThemeContext";
+import { AuthContextProvider } from "../authContext/AuthContext";
 
 export function App() {
   const [activeId, setActiveId] = useState(restaurants[0].id);
@@ -15,30 +16,34 @@ export function App() {
   if (!restaurants.length) {
     return (
       <ThemeContextProvider>
-        <Layout>
-          <ScrollProgress />
-          <p>No restaurants</p>
-        </Layout>
+        <AuthContextProvider>
+          <Layout>
+            <ScrollProgress />
+            <p>No restaurants</p>
+          </Layout>
+        </AuthContextProvider>
       </ThemeContextProvider>
     );
   }
 
   return (
     <ThemeContextProvider>
-      <Layout>
-        <ScrollProgress />
-        <Tabs
-          activeId={activeRestaurant.id}
-          items={restaurants}
-          onChange={setActiveId}
-        />
-        <Restaurant
-          key={activeRestaurant.id}
-          name={activeRestaurant.name}
-          menu={activeRestaurant.menu}
-          reviews={activeRestaurant.reviews}
-        />
-      </Layout>
+      <AuthContextProvider>
+        <Layout>
+          <ScrollProgress />
+          <Tabs
+            activeId={activeRestaurant.id}
+            items={restaurants}
+            onChange={setActiveId}
+          />
+          <Restaurant
+            key={activeRestaurant.id}
+            name={activeRestaurant.name}
+            menu={activeRestaurant.menu}
+            reviews={activeRestaurant.reviews}
+          />
+        </Layout>
+      </AuthContextProvider>
     </ThemeContextProvider>
   );
 }

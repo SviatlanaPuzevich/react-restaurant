@@ -1,4 +1,4 @@
-import { useTheme } from "../themeContex/ThemeContext";
+import { useTheme } from "../themeContex/useThemeContext";
 import styles from "./ui-kit.module.css";
 import classNames from "classnames";
 
