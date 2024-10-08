@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./scrollProgress.module.css";
 
 export function ScrollProgress() {
   const [width, setWidth] = useState("0");
@@ -15,11 +16,9 @@ export function ScrollProgress() {
   return (
     <div>
       <div
+        className={styles.progressScroll}
         style={{
-          backgroundColor: "green",
-          height: 24,
           width: width,
-          position: "fixed",
         }}
       ></div>
     </div>

@@ -1,0 +1,15 @@
+.container{ 
+    background-color: var(--grey);
+    padding: 20px 20px 0;
+    text-align: center; 
+}
+
+ .tab {
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+ }
+
+ .selectedTab {
+    border-bottom: 3px solid black
+ }

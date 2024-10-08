@@ -1,7 +1,13 @@
+import styles from "./tabs.module.css";
+import classNames from "classnames";
+
 export function Tab({ name, isSelected, onClick }) {
-  const className = isSelected ? "tab tab__selected" : "tab";
   return (
-    <button disabled={isSelected} className={className} onClick={onClick}>
+    <button
+      disabled={isSelected}
+      className={classNames(styles.tab, { [styles.selectedTab]: isSelected })}
+      onClick={onClick}
+    >
       {name}
     </button>
   );

@@ -1,0 +1,7 @@
+.progressScroll {
+    background-color: var(--green);
+    height: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}

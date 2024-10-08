@@ -1,0 +1,23 @@
+.counterContainer {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 2px;
+    font-weight: 700;
+    max-width: 80px;
+}
+
+.count {
+    text-align: center;
+    color: #898989;
+}
+
+.counterButton {
+    color: var(--white);
+    background-color: var(--yellow);
+    border: 1px solid var(--yellow);
+    border-radius: 2px;
+    width: 36px;
+    height: 36px;
+    margin: 2px;
+}

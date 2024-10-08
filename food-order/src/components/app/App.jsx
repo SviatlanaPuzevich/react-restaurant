@@ -29,24 +29,6 @@ export function App() {
         menu={activeRestaurant.menu}
         reviews={activeRestaurant.reviews}
       />
-      <Restaurant
-        key={activeRestaurant.id}
-        name={activeRestaurant.name}
-        menu={activeRestaurant.menu}
-        reviews={activeRestaurant.reviews}
-      />
-      <Restaurant
-        key={activeRestaurant.id}
-        name={activeRestaurant.name}
-        menu={activeRestaurant.menu}
-        reviews={activeRestaurant.reviews}
-      />
-      <Restaurant
-        key={activeRestaurant.id}
-        name={activeRestaurant.name}
-        menu={activeRestaurant.menu}
-        reviews={activeRestaurant.reviews}
-      />
     </Layout>
   );
 }
