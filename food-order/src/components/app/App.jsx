@@ -4,6 +4,8 @@ import { Tabs } from "../Tabs/Tabs";
 import { restaurants } from "../../../materials/mock";
 import { useState } from "react";
 import { ScrollProgress } from "../scrollProgress/ScrollProgress";
+import { ThemeContextProvider } from "../themeContex/ThemeContext";
+import { AuthContextProvider } from "../authContext/AuthContext";
 
 export function App() {
   const [activeId, setActiveId] = useState(restaurants[0].id);
@@ -11,13 +13,8 @@ export function App() {
     (restaurant) => restaurant.id === activeId
   );
 
-  if (!restaurants.length) {
-    return <p>No restaurants</p>;
-  }
-
-  return (
-    <Layout>
-      <ScrollProgress />
+  const content = restaurants.length ? (
+    <>
       <Tabs
         activeId={activeRestaurant.id}
         items={restaurants}
@@ -29,6 +26,19 @@ export function App() {
         menu={activeRestaurant.menu}
         reviews={activeRestaurant.reviews}
       />
-    </Layout>
+    </>
+  ) : (
+    <p>No restaurants</p>
+  );
+
+  return (
+    <ThemeContextProvider>
+      <AuthContextProvider>
+        <Layout>
+          <ScrollProgress />
+          {content}
+        </Layout>
+      </AuthContextProvider>
+    </ThemeContextProvider>
   );
 }

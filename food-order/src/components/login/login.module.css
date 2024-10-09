@@ -1,0 +1,13 @@
+.userName {
+    color: var(--yellow);
+    font-weight: bold;
+    padding: 0 15px;
+}
+
+.dark{
+    background-color: var(--white);   
+}
+
+.colored{
+    background-color: var(--black); 
+}

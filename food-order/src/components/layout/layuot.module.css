@@ -7,14 +7,37 @@
 .header {
     grid-column: 1/4;
     background-color: var(--black);
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
 }
 
 .main {
     grid-column: 2/3;
-    background-color: bisque;
+    background-color: var(--pink);
 }
 
 .footer {
     grid-column: 1/4;
     background-color: cadetblue;
+}
+
+.dark{
+    background-color: var(--white);   
+}
+
+.colored{
+    background-color: var(--black); 
+}
+
+.logo {
+    color: var(--pink);
+    font-weight: bold;
+    text-align: center;
+}
+
+.userName {
+    color: var(--yellow);
+    font-weight: bold;
+    padding: 0 15px;
 }

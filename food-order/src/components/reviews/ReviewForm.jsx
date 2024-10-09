@@ -2,6 +2,7 @@ import { Counter } from "../counter/Counter";
 import { useReviewForm } from "./ReviewFormReducer";
 import styles from "./reviews.module.css";
 import classNames from "classnames";
+import { Button } from "../ui-kit/Button";
 
 export function ReviewForm() {
   const {
@@ -36,16 +37,13 @@ export function ReviewForm() {
           increase={handleIncrease}
         />
         <div className={styles.formItem}>
-          <button type="submit" className={styles.submitButton}>
-            Save
-          </button>
-          <button
-            className={styles.submitButton}
+          <Button text="Save" type="submit" className={styles.submitButton} />
+          <Button
+            text="Clear"
             type="button"
             onClick={clearReview}
-          >
-            Clear
-          </button>
+            className={styles.submitButton}
+          />
         </div>
       </form>
     </div>

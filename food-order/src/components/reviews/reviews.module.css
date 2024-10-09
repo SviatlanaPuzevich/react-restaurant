@@ -1,11 +1,5 @@
 .submitButton {
-    height: 40px;
-    border: 1px solid var(--yellow);
-    border-radius: 4px;
-    color: var(--yellow);
-    text-transform: uppercase;
-    background-color: transparent;
-    font-weight: 700;
+    
     margin-right: 5px;
 }
 
