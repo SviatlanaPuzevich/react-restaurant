@@ -10,10 +10,8 @@ export function ThemeContextProvider({ children }) {
   const toggleTheme = useCallback(() => {
     if (theme === COLORED_THEME) {
       setTheme(DARK_THEME);
-      return DARK_THEME;
     } else {
       setTheme(COLORED_THEME);
-      return COLORED_THEME;
     }
   }, [theme]);
   return (

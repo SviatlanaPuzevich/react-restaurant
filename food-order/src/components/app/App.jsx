@@ -13,35 +13,30 @@ export function App() {
     (restaurant) => restaurant.id === activeId
   );
 
-  if (!restaurants.length) {
-    return (
-      <ThemeContextProvider>
-        <AuthContextProvider>
-          <Layout>
-            <ScrollProgress />
-            <p>No restaurants</p>
-          </Layout>
-        </AuthContextProvider>
-      </ThemeContextProvider>
-    );
-  }
+  const content = restaurants.length ? (
+    <>
+      <Tabs
+        activeId={activeRestaurant.id}
+        items={restaurants}
+        onChange={setActiveId}
+      />
+      <Restaurant
+        key={activeRestaurant.id}
+        name={activeRestaurant.name}
+        menu={activeRestaurant.menu}
+        reviews={activeRestaurant.reviews}
+      />
+    </>
+  ) : (
+    <p>No restaurants</p>
+  );
 
   return (
     <ThemeContextProvider>
       <AuthContextProvider>
         <Layout>
           <ScrollProgress />
-          <Tabs
-            activeId={activeRestaurant.id}
-            items={restaurants}
-            onChange={setActiveId}
-          />
-          <Restaurant
-            key={activeRestaurant.id}
-            name={activeRestaurant.name}
-            menu={activeRestaurant.menu}
-            reviews={activeRestaurant.reviews}
-          />
+          {content}
         </Layout>
       </AuthContextProvider>
     </ThemeContextProvider>
