@@ -2,13 +2,14 @@ import { Review } from "./Review";
 import { ReviewForm } from "./ReviewForm";
 import { Authorized } from "../authorized/Authorized";
 
-export function Reviews({ reviews }) {
-  const header = reviews.length > 0 ? "Reviews" : "No reviews";
+export function Reviews({ ids }) {
+  const header = ids.length ? "Reviews" : "No reviews";
+  console.log(ids);
   return (
     <>
       <h3>{header}</h3>
-      {reviews.map((review) => (
-        <Review key={review.id} review={review} />
+      {ids.map((id) => (
+        <Review key={id} id={id} />
       ))}
       <Authorized>
         <ReviewForm />
