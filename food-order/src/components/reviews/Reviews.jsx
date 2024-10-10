@@ -4,7 +4,6 @@ import { Authorized } from "../authorized/Authorized";
 
 export function Reviews({ ids }) {
   const header = ids.length ? "Reviews" : "No reviews";
-  console.log(ids);
   return (
     <>
       <h3>{header}</h3>
