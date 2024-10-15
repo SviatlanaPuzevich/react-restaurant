@@ -12,7 +12,7 @@ export function Dish({ id }) {
       <div>{dish.ingredients.join(", ")}</div>
       <div className={styles.price}>{dish.price}</div>
       <Authorized>
-        <DishCounter />
+        <DishCounter id={dish.id} />
       </Authorized>
     </div>
   );

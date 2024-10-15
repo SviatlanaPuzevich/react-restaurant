@@ -1,14 +1,11 @@
 import { Counter } from "./Counter";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, selectAmountById } from "../../redux/cart";
 
-export function DishCounter() {
-  const [count, setCount] = useState(0);
-  const increase = () => {
-    setCount((count) => ++count);
-  };
-  const decrease = () => {
-    if (count <= 0) return;
-    setCount((count) => --count);
-  };
-  return <Counter count={count} decrease={decrease} increase={increase} />;
+export function DishCounter({ id }) {
+  const amount = useSelector((state) => selectAmountById(state, id));
+  const dispatch = useDispatch();
+  const increase = () => dispatch(addToCart(id));
+  const decrease = () => dispatch(removeFromCart(id));
+  return <Counter count={amount} decrease={decrease} increase={increase} />;
 }
