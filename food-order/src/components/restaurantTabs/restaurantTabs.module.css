@@ -1,0 +1,23 @@
+.tabContainer {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+    background-color: var(--grey);
+}
+
+.tab {
+    text-decoration: none;
+    color: var(--black);
+    padding: 5px 2px;
+}
+
+.tab:hover {
+    font-weight: bold;
+  }
+
+.selected {
+    border-bottom: 3px solid var(--black);
+}
+
+
