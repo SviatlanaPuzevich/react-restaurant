@@ -1,0 +1,15 @@
+.dark {
+    background-color: var(--grey);
+}
+
+.colored{
+    background-color: var(--yellow);   
+}
+
+.timekeeper {
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 2px;
+    font-size: large;
+    max-width: 100px;
+}
