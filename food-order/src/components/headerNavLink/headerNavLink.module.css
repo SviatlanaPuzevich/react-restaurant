@@ -1,0 +1,19 @@
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+.dark{
+    color: var(--black); 
+    fill: var(--black);  
+}
+
+.colored{
+    color: var(--yellow); 
+    fill: var(--white);
+}
+
+.container {
+    display: inline-block;
+    min-width: 200px;
+    text-align: center;
+}
