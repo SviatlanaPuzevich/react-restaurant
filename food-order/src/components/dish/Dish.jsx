@@ -10,7 +10,7 @@ export function Dish({ id }) {
   const dish = useSelector((state) => selectDishById(state, id));
   return (
     <div className={styles.card}>
-      <Link to={`/dish/${id}`} className={classNames(styles.cardLink)}>
+      <Link to={`/dish/${id}`} className={styles.cardLink}>
         <h3>{dish.name}</h3>
         <div>{dish.ingredients.join(", ")}</div>
       </Link>
