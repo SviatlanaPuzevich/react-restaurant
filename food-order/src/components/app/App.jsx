@@ -49,9 +49,7 @@ export function App() {
     <Provider store={store}>
       <ThemeContextProvider>
         <AuthContextProvider>
-          <RouterProvider router={router}>
-            <Layout />
-          </RouterProvider>
+          <RouterProvider router={router} />
         </AuthContextProvider>
       </ThemeContextProvider>
     </Provider>
