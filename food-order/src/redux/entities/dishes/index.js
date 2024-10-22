@@ -1,11 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { getDishById, getDishes } from "./get-dishes";
-import {
-  FULFILLED,
-  IDLE,
-  PENDING,
-  REJECTED,
-} from "../../../const/request-statuses";
+import { FULFILLED, IDLE } from "../../../const/request-statuses";
 
 const entityAdapter = createEntityAdapter();
 

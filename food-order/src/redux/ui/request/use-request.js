@@ -17,4 +17,5 @@ export function useRequestStatus(thunk, ...params) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, thunk, ...params]);
+  return requestStatus;
 }

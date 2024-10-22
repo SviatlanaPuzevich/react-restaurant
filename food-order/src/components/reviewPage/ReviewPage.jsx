@@ -6,19 +6,19 @@ import { useParams } from "react-router-dom";
 import { getReviews } from "../../redux/entities/reviews/get-reviews";
 import { selectReviews } from "../../redux/entities/reviews";
 import { getUsers } from "../../redux/entities/users/get-users";
-import { IDLE, PENDING } from "../../const/request-statuses";
+import { PENDING } from "../../const/request-statuses";
 import { useRequestStatus } from "../../redux/ui/request/use-request";
 
 export function ReviewPage() {
   const { restaurantId } = useParams();
   const reviewRequestStatus = useRequestStatus(getReviews, restaurantId);
-  const usersRequestStatus = useSelector(getUsers);
+  const usersRequestStatus = useRequestStatus(getUsers);
   const reviews = useSelector(selectReviews);
 
-  if (reviewRequestStatus === IDLE || reviewRequestStatus === PENDING) {
+  if (reviewRequestStatus === PENDING) {
     return "reviews are loading";
   }
-  if (usersRequestStatus === IDLE || usersRequestStatus === PENDING) {
+  if (usersRequestStatus === PENDING) {
     return "users are loading";
   }
   const header = reviews.length ? "Reviews" : "No reviews";

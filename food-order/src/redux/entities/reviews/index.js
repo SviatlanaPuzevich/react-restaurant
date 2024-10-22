@@ -1,11 +1,6 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import { getReviews } from "./get-reviews";
-import {
-  FULFILLED,
-  IDLE,
-  PENDING,
-  REJECTED,
-} from "../../../const/request-statuses";
+import { FULFILLED, IDLE } from "../../../const/request-statuses";
 
 const entityAdapter = createEntityAdapter();
 
