@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { Restaurant } from "../restaurant/restaurant";
 import { NavLink, useParams } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import styles from "./restaurantPage.module.css";
+import { Restaurant } from "../restaurant/Restaurant";
 
 export function RestaurantPage() {
   const { restaurantId } = useParams();

@@ -1,9 +1,12 @@
 import styles from "./dishPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { selectDishById, selectDishesRequestStatus } from "../../redux/dishes";
+import {
+  selectDishById,
+  selectDishesRequestStatus,
+} from "../../redux/entities/dishes";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getDishById } from "../../redux/dishes/get-dishes";
+import { getDishById } from "../../redux/entities/dishes/get-dishes";
 import { IDLE, PENDING } from "../../const/request-statuses";
 
 export function DishPage() {

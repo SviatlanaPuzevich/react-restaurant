@@ -5,7 +5,7 @@ import {
   IDLE,
   PENDING,
   REJECTED,
-} from "../../const/request-statuses";
+} from "../../../const/request-statuses";
 
 const entityAdapter = createEntityAdapter();
 
@@ -21,18 +21,10 @@ export const reviewsSlice = createSlice({
     selectReviewRequestStatus: (state) => state.requestStatus,
   },
   extraReducers: (builder) =>
-    builder
-      .addCase(getReviews.fulfilled, (state, action) => {
-        entityAdapter.setAll(state, action.payload);
-        state.requestStatus = FULFILLED;
-      })
-      .addCase(getReviews.rejected, (state, action) => {
-        state.requestStatus = REJECTED;
-        state.error = action.payload || action.error;
-      })
-      .addCase(getReviews.pending, (state) => {
-        state.requestStatus = PENDING;
-      }),
+    builder.addCase(getReviews.fulfilled, (state, action) => {
+      entityAdapter.setAll(state, action.payload);
+      state.requestStatus = FULFILLED;
+    }),
 });
 
 export const { selectReviewById, selectReviews, selectReviewRequestStatus } =

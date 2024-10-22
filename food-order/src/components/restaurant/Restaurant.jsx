@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurants";
+import { selectRestaurantById } from "../../redux/entities/restaurants";
 import styles from "./restaurant.module.css";
 import classNames from "classnames";
 

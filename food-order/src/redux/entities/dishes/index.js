@@ -5,7 +5,7 @@ import {
   IDLE,
   PENDING,
   REJECTED,
-} from "../../const/request-statuses";
+} from "../../../const/request-statuses";
 
 const entityAdapter = createEntityAdapter();
 
@@ -23,25 +23,13 @@ export const dishesSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(getDishes.pending, (state) => {
-        state.requestStatus = PENDING;
-      })
       .addCase(getDishes.fulfilled, (state, { payload }) => {
         entityAdapter.setAll(state, payload);
         state.requestStatus = FULFILLED;
       })
-      .addCase(getDishes.rejected, (state) => {
-        state.requestStatus = REJECTED;
-      })
-      .addCase(getDishById.pending, (state) => {
-        state.requestStatus = PENDING;
-      })
       .addCase(getDishById.fulfilled, (state, { payload }) => {
         entityAdapter.addOne(state, payload);
         state.requestStatus = FULFILLED;
-      })
-      .addCase(getDishById.rejected, (state) => {
-        state.requestStatus = REJECTED;
       }),
 });
 
