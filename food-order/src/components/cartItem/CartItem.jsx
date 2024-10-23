@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/entities/dishes";
+import { useGetDishByIdQuery } from "../../redux/services/api/api";
 
 export function CartItem({ id, amount }) {
-  const { name } = useSelector((state) => selectDishById(state, id)) || {};
-  if (!name) {
-    return null;
+  const { isLoading, error, data } = useGetDishByIdQuery(id);
+  if (isLoading) return;
+  if (!data) {
+    return "no name";
   }
   return (
     <div>
-      {name} - {amount}
+      {data.name} - {amount}
     </div>
   );
 }

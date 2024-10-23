@@ -51,8 +51,11 @@ function reviewReducer(review, action) {
   }
 }
 
-export function useReviewForm() {
-  const [review, dispatch] = useReducer(reviewReducer, DEFAULT_REVIEW_VALUE);
+export function useReviewForm(initReview) {
+  const [review, dispatch] = useReducer(
+    reviewReducer,
+    initReview || DEFAULT_REVIEW_VALUE
+  );
   const clearReview = () => {
     dispatch({ type: "clear" });
   };
@@ -60,7 +63,7 @@ export function useReviewForm() {
     dispatch({ type: "setUser", user: e.target.value });
   };
   const handleSetText = (e) => {
-    dispatch({ type: "setText", user: e.target.value });
+    dispatch({ type: "setText", text: e.target.value });
   };
   const handleIncrease = () => {
     dispatch({ type: "increase" });

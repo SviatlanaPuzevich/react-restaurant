@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRequestStatusById } from ".";
 
-export function useRequestStatus(thunk, ...params) {
+export function useRequest(thunk, ...params) {
   const dispatch = useDispatch();
   const [request, setRequest] = useState(null);
   const requestStatus = useSelector((state) =>

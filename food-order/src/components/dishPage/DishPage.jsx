@@ -1,32 +1,18 @@
 import styles from "./dishPage.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectDishById,
-  selectDishesRequestStatus,
-} from "../../redux/entities/dishes";
+import {} from "../../redux/entities/dishes";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { getDishById } from "../../redux/entities/dishes/get-dishes";
-import { IDLE, PENDING } from "../../const/request-statuses";
+import { useGetDishByIdQuery } from "../../redux/services/api/api";
 
 export function DishPage() {
   const { dishId } = useParams();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getDishById(dishId));
-  }, [dispatch, dishId]);
-  const requestStatus = useSelector(selectDishesRequestStatus);
-  const dish = useSelector((state) => selectDishById(state, dishId));
-  if (requestStatus === IDLE || requestStatus === PENDING) {
-    return "dish is  loading";
-  }
-
-  const { name, ingredients } = dish;
+  const { isLoading, error, data: dish } = useGetDishByIdQuery(dishId);
+  if (isLoading) return <div>Loading menu...</div>;
+  if (error) return <div>Error: {error.message}</div>;
   return (
     <div className={styles.card}>
-      <h3>{name}</h3>
+      <h3>{dish.name}</h3>
       <ul>
-        {ingredients.map((ingredient) => {
+        {dish.ingredients.map((ingredient) => {
           return <li key={ingredient}>{ingredient}</li>;
         })}
       </ul>

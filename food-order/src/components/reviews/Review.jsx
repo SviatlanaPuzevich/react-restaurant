@@ -1,16 +1,18 @@
-import { useSelector } from "react-redux";
+import { Rating } from "../rating/Rating";
 import styles from "./reviews.module.css";
-import { selectUserById } from "../../redux/entities/users";
 
 export function Review({ review }) {
-  const user = useSelector((state) => selectUserById(state, review?.userId));
-
-  const userName = user ? user.name : "Anonimys";
   return (
     <div className={styles.reviewCard}>
-      <div>{userName}</div>
-      <div key={review.id}>{review.text}</div>
-      <div>{review.rating}</div>
+      <div className={styles.reviewWrapper}>
+        <div>
+          <div className={styles.user}>{review.user?.name}</div>
+          <div>{review.text}</div>
+        </div>
+        <div className={styles.ratingWrapper}>
+          <Rating rating={review.rating} />
+        </div>
+      </div>
     </div>
   );
 }
