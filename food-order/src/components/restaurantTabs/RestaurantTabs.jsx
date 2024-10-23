@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantsByIds } from "../../redux/restaurants";
+import { selectRestaurantsByIds } from "../../redux/entities/restaurants";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./restaurantTabs.module.css";

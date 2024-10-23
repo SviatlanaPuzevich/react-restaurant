@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/dishes";
+import { selectDishById } from "../../redux/entities/dishes";
 
 export function CartItem({ id, amount }) {
   const { name } = useSelector((state) => selectDishById(state, id)) || {};

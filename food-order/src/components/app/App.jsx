@@ -9,7 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { HomePage } from "../homePage/HomePage";
-import { RestaurantPages } from "../restaurantPages/RestaurantPages";
+import { RestaurantsPages } from "../restaurantsPages/RestaurantsPages";
 import { RestaurantPage } from "../restaurantPage/RestaurantPage";
 import { Menu } from "../menu/Menu";
 import { ReviewPage } from "../reviewPage/ReviewPage";
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       { path: "home", element: <HomePage /> },
       {
         path: "restaurants",
-        element: <RestaurantPages />,
+        element: <RestaurantsPages />,
         children: [
           {
             path: ":restaurantId",

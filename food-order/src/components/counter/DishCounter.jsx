@@ -1,6 +1,10 @@
 import { Counter } from "./Counter";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart, selectAmountById } from "../../redux/cart";
+import {
+  addToCart,
+  removeFromCart,
+  selectAmountById,
+} from "../../redux/ui/cart";
 
 export function DishCounter({ id }) {
   const amount = useSelector((state) => selectAmountById(state, id));
