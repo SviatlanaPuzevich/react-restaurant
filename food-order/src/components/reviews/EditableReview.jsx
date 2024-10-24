@@ -23,7 +23,7 @@ export function EditableReview({ review }) {
     });
   };
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <div className={styles.reviewCard}>
         <div>
           <div className={styles.user}>{review.user?.name}</div>

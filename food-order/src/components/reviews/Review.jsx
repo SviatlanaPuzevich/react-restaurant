@@ -10,7 +10,7 @@ export function Review({ review }) {
           <div>{review.text}</div>
         </div>
         <div className={styles.ratingWrapper}>
-          <Rating rating={review.rating} />
+          <Rating initValue={review.rating} readOnly={true} />
         </div>
       </div>
     </div>
