@@ -17,7 +17,7 @@ import { DishPage } from "../dishPage/DishPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/r",
     element: <Layout />,
     children: [
       { path: "home", element: <HomePage /> },
@@ -55,3 +55,5 @@ export function App() {
     </Provider>
   );
 }
+
+export default App;
