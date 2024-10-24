@@ -1,23 +1,18 @@
 import { Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectRestaurantIds } from "../../redux/entities/restaurants";
 import { RestaurantTabs } from "../restaurantTabs/RestaurantTabs";
-import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants";
-import { PENDING } from "../../const/request-statuses";
-import { useRequestStatus } from "../../redux/ui/request/use-request";
+import { useGetRestaurantsQuery } from "../../redux/services/api/api";
 
 export function RestaurantsPages() {
-  const requestStatus = useRequestStatus(getRestaurants);
-  const restaurantIds = useSelector(selectRestaurantIds);
-  if (!restaurantIds.length) {
-    return <p>No restaurants</p>;
-  }
-  if (requestStatus === PENDING) {
+  const { data, isLoading } = useGetRestaurantsQuery();
+  if (isLoading) {
     return "restaurants are loading";
+  }
+  if (!data.length) {
+    return <p>No restaurants</p>;
   }
   return (
     <>
-      <RestaurantTabs ids={restaurantIds} />
+      <RestaurantTabs restaurants={data} />
       <Outlet />
     </>
   );

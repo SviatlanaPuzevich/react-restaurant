@@ -1,19 +1,13 @@
 import { Dish } from "../dish/Dish";
 import styles from "./menu.module.css";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getDishes } from "../../redux/entities/dishes/get-dishes";
-import { selectMenu } from "../../redux/entities/dishes";
-import { IDLE, PENDING } from "../../const/request-statuses";
-import { useRequestStatus } from "../../redux/ui/request/use-request";
+import { useGetDishesQuery } from "../../redux/services/api/api";
 
 export function Menu() {
   const { restaurantId } = useParams();
-  const requestStatus = useRequestStatus(getDishes, restaurantId);
-  const menu = useSelector(selectMenu);
-  if (requestStatus === IDLE || requestStatus === PENDING) {
-    return "dishes are loading";
-  }
+  const { isLoading, error, data: menu } = useGetDishesQuery(restaurantId);
+  if (isLoading) return <div>Loading menu...</div>;
+  if (error) return <div>Error: {error.message}</div>;
   return (
     <div>
       <h3 className={styles.title}>Menu:</h3>
