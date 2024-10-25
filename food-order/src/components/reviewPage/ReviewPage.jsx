@@ -1,13 +1,15 @@
+"use client";
+
 import { Review } from "../reviews/Review";
 import { ReviewForm } from "../reviews/ReviewForm";
 import { Authorized } from "../authorized/Authorized";
-import { useParams } from "react-router-dom";
 import {
   useGetRviewsQuery,
   useGetUsersQuery,
 } from "../../redux/services/api/api";
 import { useAuth } from "../authContext/useAuth";
 import { EditableReview } from "../reviews/EditableReview";
+import { useParams } from "next/navigation";
 
 export function ReviewPage() {
   const { restaurantId } = useParams();

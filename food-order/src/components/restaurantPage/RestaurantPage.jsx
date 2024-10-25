@@ -1,35 +1,41 @@
+"use client";
 import classNames from "classnames";
-import { NavLink, useParams } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { useParams, usePathname } from "next/navigation";
 import styles from "./restaurantPage.module.css";
 import { Restaurant } from "../restaurant/Restaurant";
+import Link from "next/link";
 
-export function RestaurantPage() {
+const MENU_PATH = "/menu";
+const REVIEWS_PATH = "/reviews";
+
+export function RestaurantPage({ children }) {
   const { restaurantId } = useParams();
+  const path = `/restaurants/${restaurantId}`;
+  const pathName = usePathname();
   return (
     <div>
       <div className={classNames(styles.tabContainer)}>
-        <NavLink
-          to="menu"
-          className={({ isActive }) =>
-            classNames(styles.tab, isActive && styles.selected)
-          }
+        <Link
+          href={`${path}${MENU_PATH}`}
+          className={classNames(
+            styles.tab,
+            pathName.includes(MENU_PATH) && styles.selected
+          )}
         >
           Menu
-        </NavLink>
-        <NavLink
-          to="reviews"
-          className={({ isActive }) =>
-            classNames(styles.tab, {
-              isActive: isActive,
-            })
-          }
+        </Link>
+        <Link
+          href={`${path}${REVIEWS_PATH}`}
+          className={classNames(
+            styles.tab,
+            pathName.includes(REVIEWS_PATH) && styles.selected
+          )}
         >
           Reviews
-        </NavLink>
+        </Link>
       </div>
       <Restaurant key={restaurantId} id={restaurantId} />
-      <Outlet />
+      {children}
     </div>
   );
 }

@@ -1,7 +1,8 @@
+"use client";
 import { Dish } from "../dish/Dish";
 import styles from "./menu.module.css";
-import { useParams } from "react-router-dom";
 import { useGetDishesQuery } from "../../redux/services/api/api";
+import { useParams } from "next/navigation";
 
 export function Menu() {
   const { restaurantId } = useParams();

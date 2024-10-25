@@ -1,15 +1,15 @@
+"use client";
 import { useTheme } from "../themeContex/useThemeContext";
 import styles from "./layuot.module.css";
 import classNames from "classnames";
 import { ThemeButton } from "../theme-button/ThemeButton";
 import { Login } from "../login/Login";
-import { Outlet } from "react-router-dom";
 import { ScrollProgress } from "../scrollProgress/ScrollProgress";
 import { Cart } from "../cart/Cart";
 import { Timekeeper } from "../timekeeper/Timekeeper";
 import { HeaderNavLink } from "../headerNavLink/HeaderNavLink";
 
-export function Layout() {
+export function Layout({ children }) {
   const { theme } = useTheme();
   return (
     <>
@@ -27,7 +27,7 @@ export function Layout() {
           </div>
         </header>
         <main className={styles.main}>
-          <Outlet />
+          {children}
           <Cart />
         </main>
         <footer className={styles.footer}></footer>
