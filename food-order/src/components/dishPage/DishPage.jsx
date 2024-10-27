@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./dishPage.module.css";
-import {} from "../../redux/entities/dishes";
 import { useGetDishByIdQuery } from "../../redux/services/api/api";
 import { useParams } from "next/navigation";
 

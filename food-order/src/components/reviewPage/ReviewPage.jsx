@@ -8,7 +8,6 @@ import {
   useGetUsersQuery,
 } from "../../redux/services/api/api";
 import { useAuth } from "../authContext/useAuth";
-import { EditableReview } from "../reviews/EditableReview";
 import { useParams } from "next/navigation";
 
 export function ReviewPage() {
@@ -35,7 +34,7 @@ export function ReviewPage() {
       <h3>{header}</h3>
       {reviews.map((review) => {
         return userId === review.user?.id ? (
-          <EditableReview key={review.id} review={review} />
+          <ReviewForm key={review.id} initReview={review} isEdit={true} />
         ) : (
           <Review key={review.id} review={review} />
         );
