@@ -34,9 +34,7 @@ export const apiSlice = createApi({
         body: review,
         url: `/review/${reviewId}`,
       }),
-      invalidatesTags: ({ restaurantId }) => [
-        { type: "Review", id: restaurantId },
-      ],
+      invalidatesTags: ({ reviewId }) => [{ type: "Review", id: reviewId }],
     }),
     getUsers: builder.query({ query: () => "/users" }),
   }),

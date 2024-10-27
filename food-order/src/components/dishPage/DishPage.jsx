@@ -1,5 +1,4 @@
 import styles from "./dishPage.module.css";
-import {} from "../../redux/entities/dishes";
 import { useParams } from "react-router-dom";
 import { useGetDishByIdQuery } from "../../redux/services/api/api";
 
