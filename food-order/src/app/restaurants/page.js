@@ -1,3 +1,3 @@
 export default function RestaurantsPage() {
-  return <></>;
+  return null;
 }
