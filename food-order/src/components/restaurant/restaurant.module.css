@@ -2,3 +2,9 @@
     margin: auto;
     text-align: center;
 }
+
+.imgTitle{
+    min-height: 120px;
+    background-position: 51% 50%;
+    background-size: cover;
+}
