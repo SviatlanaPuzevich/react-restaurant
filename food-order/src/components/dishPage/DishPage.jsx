@@ -1,15 +1,6 @@
-"use client";
-
 import styles from "./dishPage.module.css";
-import {} from "../../redux/entities/dishes";
-import { useGetDishByIdQuery } from "../../redux/services/api/api";
-import { useParams } from "next/navigation";
 
-export function DishPage() {
-  const { dishId } = useParams();
-  const { isLoading, error, data: dish } = useGetDishByIdQuery(dishId);
-  if (isLoading) return <div>Loading menu...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+export function DishPage({ dish }) {
   return (
     <div className={styles.card}>
       <h3>{dish.name}</h3>

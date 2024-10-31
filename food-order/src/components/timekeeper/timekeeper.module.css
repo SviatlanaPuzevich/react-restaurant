@@ -11,5 +11,7 @@
     border: 1px solid;
     border-radius: 2px;
     font-size: large;
-    max-width: 100px;
+    min-width: 86px;
+    max-width: 86px;
+    min-height: 20px;
 }

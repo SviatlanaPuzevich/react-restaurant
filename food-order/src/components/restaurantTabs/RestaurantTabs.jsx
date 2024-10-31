@@ -1,3 +1,4 @@
+"use client";
 import classNames from "classnames";
 import styles from "./restaurantTabs.module.css";
 import Link from "next/link";
