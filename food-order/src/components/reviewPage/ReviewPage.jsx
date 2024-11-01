@@ -2,41 +2,21 @@
 
 import { Review } from "../reviews/Review";
 import { ReviewForm } from "../reviews/ReviewForm";
-import { Authorized } from "../authorized/Authorized";
-import {
-  useGetRviewsQuery,
-  useGetUsersQuery,
-} from "../../redux/services/api/api";
-import { useAuth } from "../authContext/useAuth";
-import { useParams } from "next/navigation";
+import { useMemo } from "react";
 
-export function ReviewPage() {
-  const { restaurantId } = useParams();
-  const { userId } = useAuth();
-  const {
-    isLoading: isUsesrsLoading,
-    error: usersError,
-    data: users,
-  } = useGetUsersQuery();
-  const { isFetching, error, data } = useGetRviewsQuery(restaurantId);
-  if (isUsesrsLoading) return <div>Loading reviews data...</div>;
-  if (isFetching) return <div>Loading reviews...</div>;
-  if (error || usersError)
-    return (
-      <div>
-        Error: {error.message} && {usersError.message}
-      </div>
-    );
-  const reviews = addUserToReview(data, users);
+
+export function ReviewPage({ reviews, users, restaurantId }) {
+  const reviewsWithUsers = useMemo(() => {
+    return addUserToReview(reviews, users);
+  }, [reviews, users]);
   const header = reviews.length ? "Reviews" : "No reviews";
+
   return (
     <>
       <h3>{header}</h3>
-      {reviews.map((review) => {
-        return userId === review.user?.id ? (
-          <ReviewForm key={review.id} initReview={review} isEdit={true} />
-        ) : (
-          <Review key={review.id} review={review} />
+      {reviewsWithUsers.map((review) => {
+        return (
+          <Review key={review.id} review={review} restaurantId={restaurantId} />
         );
       })}
       <Authorized>
