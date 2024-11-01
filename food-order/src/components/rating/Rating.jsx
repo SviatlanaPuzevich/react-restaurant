@@ -1,19 +1,17 @@
-import { useState } from "react";
 import { Star } from "./Star";
 
 const MAX_RATING = 5;
-export function Rating({ initValue, readOnly }) {
-  const [rating, setRating] = useState(initValue);
+export function Rating({ value, readOnly, onChange }) {
   const handleOnclick = (payload) => {
     if (readOnly) return;
-    setRating(payload);
+    onChange?.(payload);
   };
   return (
     <>
       {Array.from({ length: MAX_RATING }, (_, i) => (
         <Star
           key={i}
-          isFilled={i < rating}
+          isFilled={i < value}
           payload={i + 1}
           onClick={handleOnclick}
         />

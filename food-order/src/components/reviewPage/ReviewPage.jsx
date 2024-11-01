@@ -3,14 +3,14 @@ import { ReviewForm } from "../reviews/ReviewForm";
 import { Authorized } from "../authorized/Authorized";
 import { useParams } from "react-router-dom";
 import {
-  useGetRviewsQuery,
+  useGetReviewsQuery,
   useGetUsersQuery,
 } from "../../redux/services/api/api";
 import { useMemo } from "react";
 
 export function ReviewPage() {
   const { restaurantId } = useParams();
-  const { isFetching, error, data: reviews } = useGetRviewsQuery(restaurantId);
+  const { isFetching, error, data: reviews } = useGetReviewsQuery(restaurantId);
   const {
     isLoading: isUsesrsLoading,
     error: usersError,
@@ -37,7 +37,9 @@ export function ReviewPage() {
     <>
       <h3>{header}</h3>
       {reviewsWithUsers.map((review) => {
-        return <Review key={review.id} review={review} />;
+        return (
+          <Review key={review.id} review={review} restaurantId={restaurantId} />
+        );
       })}
       <Authorized>
         <ReviewForm restaurantId={restaurantId} />

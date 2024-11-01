@@ -3,10 +3,17 @@ import styles from "./reviews.module.css";
 import { useAuth } from "../authContext/useAuth";
 import { ReviewForm } from "../reviews/ReviewForm";
 
-export function Review({ review }) {
+export function Review({ review, restaurantId }) {
   const { userId } = useAuth();
   if (userId === review.user?.id) {
-    return <ReviewForm key={review.id} initReview={review} isEdit />;
+    return (
+      <ReviewForm
+        key={review.id}
+        initReview={review}
+        restaurantId={restaurantId}
+        isEdit
+      />
+    );
   }
   return (
     <div className={styles.reviewCard}>
@@ -16,7 +23,7 @@ export function Review({ review }) {
           <div>{review.text}</div>
         </div>
         <div className={styles.ratingWrapper}>
-          <Rating initValue={review.rating} readOnly />
+          <Rating value={review.rating} readOnly />
         </div>
       </div>
     </div>

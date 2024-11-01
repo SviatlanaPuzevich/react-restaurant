@@ -1,9 +1,15 @@
 .title {
-    margin: auto;
-    text-align: center;
+    color: var(--white);
+    font-weight: bolder;
+    font-size: 36px;
+    text-shadow: 1px 1px 10px var(--black);
 }
 
 .imgTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-height: 120px;
     background-position: 51% 50%;
     background-size: cover;

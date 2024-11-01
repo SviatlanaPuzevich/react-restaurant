@@ -33,8 +33,12 @@ export function ReviewForm({ restaurantId, isEdit, initReview }) {
         userId: review.user.id,
         rating: review.rating,
       },
+      restaurantId,
     });
   };
+  if (isFetching) {
+    return "Reviws are updating...";
+  }
   return (
     <div className={styles.reviewCard}>
       <form onSubmit={(e) => e.preventDefault()}>
