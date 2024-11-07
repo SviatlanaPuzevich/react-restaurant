@@ -1,6 +1,8 @@
+"use client";
+
 import styles from "./dishPage.module.css";
-import { useParams } from "react-router-dom";
 import { useGetDishByIdQuery } from "../../redux/services/api/api";
+import { useParams } from "next/navigation";
 
 export function DishPage() {
   const { dishId } = useParams();

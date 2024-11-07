@@ -1,3 +1,4 @@
+"use client";
 import { AuthContex } from ".";
 import { useState } from "react";
 import { useGetUsersQuery } from "../../redux/services/api/api";

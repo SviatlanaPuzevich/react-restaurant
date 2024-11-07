@@ -1,20 +1,22 @@
+"use client";
 import { useTheme } from "../themeContex/useThemeContext";
 import classNames from "classnames";
 import styles from "./headerNavLink.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const HOME_PATH = "home";
 const RESTAURANTS_PATH = "restaurants";
 
 export function HeaderNavLink() {
+  const pathName = usePathname();
   const { theme } = useTheme();
-  const location = useLocation();
-  const isRestaurantPath = location.pathname.includes(RESTAURANTS_PATH);
+  const isRestaurantPath = pathName && pathName.includes(RESTAURANTS_PATH);
   const text = isRestaurantPath ? "Home" : "Restaurants";
   const path = isRestaurantPath ? HOME_PATH : RESTAURANTS_PATH;
   return (
     <div className={classNames(styles.container)}>
-      <Link to={path} className={classNames(styles.link)}>
+      <Link href={`/${path}`} className={classNames(styles.link)}>
         <svg
           viewBox="64 64 896 896"
           width="1em"

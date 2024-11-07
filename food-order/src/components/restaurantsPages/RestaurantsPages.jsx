@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
+"use client";
 import { RestaurantTabs } from "../restaurantTabs/RestaurantTabs";
 import { useGetRestaurantsQuery } from "../../redux/services/api/api";
 
-export function RestaurantsPages() {
+export function RestaurantsPages({ children }) {
   const { data, isLoading } = useGetRestaurantsQuery();
   if (isLoading) {
     return "restaurants are loading";
@@ -13,7 +13,7 @@ export function RestaurantsPages() {
   return (
     <>
       <RestaurantTabs restaurants={data} />
-      <Outlet />
+      {children}
     </>
   );
 }
