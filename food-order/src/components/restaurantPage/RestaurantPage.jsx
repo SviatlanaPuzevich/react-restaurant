@@ -8,6 +8,7 @@ export function RestaurantPage() {
   const { restaurantId } = useParams();
   return (
     <div>
+      <Restaurant key={restaurantId} id={restaurantId} />
       <div className={classNames(styles.tabContainer)}>
         <NavLink
           to="menu"
@@ -28,7 +29,6 @@ export function RestaurantPage() {
           Reviews
         </NavLink>
       </div>
-      <Restaurant key={restaurantId} id={restaurantId} />
       <Outlet />
     </div>
   );

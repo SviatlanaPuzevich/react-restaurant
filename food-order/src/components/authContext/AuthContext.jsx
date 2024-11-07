@@ -1,23 +1,36 @@
 import { AuthContex } from ".";
 import { useState } from "react";
-const userNames = ["Admin", "Dany", "Helen", "Jhon"];
+import { useGetUsersQuery } from "../../redux/services/api/api";
 
 export function AuthContextProvider({ children }) {
-  const [userName, setUserName] = useState(null);
+  const [user, setUser] = useState(null);
+  const { isLoading, data: users } = useGetUsersQuery();
+  if (isLoading) return;
   const login = () => {
     const name = prompt("Please, enter your name..", "");
-    if (userNames.includes(name)) {
-      setUserName(name);
+    const authUser = getUserByName(users, name);
+    if (authUser) {
+      setUser(authUser);
     }
   };
   const logout = () => {
-    setUserName(null);
+    setUser(null);
   };
   return (
     <AuthContex.Provider
-      value={{ isAuthorized: userName !== null, userName, login, logout }}
+      value={{
+        isAuthorized: user !== null,
+        userName: user?.name,
+        userId: user?.id,
+        login,
+        logout,
+      }}
     >
       {children}
     </AuthContex.Provider>
   );
+}
+
+function getUserByName(users, name) {
+  return users.find((user) => user.name == name);
 }

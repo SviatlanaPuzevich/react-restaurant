@@ -1,16 +1,31 @@
-import { useSelector } from "react-redux";
+import { Rating } from "../rating/Rating";
 import styles from "./reviews.module.css";
-import { selectUserById } from "../../redux/entities/users";
+import { useAuth } from "../authContext/useAuth";
+import { ReviewForm } from "../reviews/ReviewForm";
 
-export function Review({ review }) {
-  const user = useSelector((state) => selectUserById(state, review?.userId));
-
-  const userName = user ? user.name : "Anonimys";
+export function Review({ review, restaurantId }) {
+  const { userId } = useAuth();
+  if (userId === review.user?.id) {
+    return (
+      <ReviewForm
+        key={review.id}
+        initReview={review}
+        restaurantId={restaurantId}
+        isEdit
+      />
+    );
+  }
   return (
     <div className={styles.reviewCard}>
-      <div>{userName}</div>
-      <div key={review.id}>{review.text}</div>
-      <div>{review.rating}</div>
+      <div className={styles.reviewWrapper}>
+        <div>
+          <div className={styles.user}>{review.user?.name}</div>
+          <div>{review.text}</div>
+        </div>
+        <div className={styles.ratingWrapper}>
+          <Rating value={review.rating} readOnly />
+        </div>
+      </div>
     </div>
   );
 }

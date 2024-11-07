@@ -1,14 +1,22 @@
-.submitButton {
-    
-    margin-right: 5px;
-}
-
 .reviewCard {
     border: 1px solid var(--grey);
     background-color: var(--white);
     color: var(--black);
     padding: 20px;
     margin: 10px;
+}
+
+.reviewWrapper{
+    display: flex;
+    padding: 10px;
+}
+.ratingWrapper {
+    margin-left: auto;
+    align-self: center;
+}
+
+.user {
+    font-weight: bold;
 }
 
  .formItem {
@@ -32,4 +40,8 @@
 
 .label {
     min-width: 15%;
+}
+
+.submitButton { 
+    margin-right: 5px;
 }
