@@ -14,7 +14,7 @@ export function RestaurantPage({ restaurant, children }) {
   const pathName = usePathname();
   return (
     <div>
-      <Restaurant key={restaurantId} id={restaurantId} />
+      <Restaurant key={restaurantId} restaurant={restaurant} />
       <div className={classNames(styles.tabContainer)}>
         <Link
           href={`${path}${MENU_PATH}`}

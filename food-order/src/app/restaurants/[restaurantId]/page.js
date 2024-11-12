@@ -1,8 +1,7 @@
-"use client";
-import { redirect, useParams } from "next/navigation";
+import { redirect } from "next/navigation";
 
-export default function RestaurantPage() {
-  const { restaurantId } = useParams();
+export default async function RestaurantPage({ params }) {
+  const { restaurantId } = await params;
   redirect(`/restaurants/${restaurantId}/menu`);
   return null;
 }

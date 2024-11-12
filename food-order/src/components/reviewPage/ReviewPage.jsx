@@ -3,7 +3,7 @@
 import { Review } from "../reviews/Review";
 import { ReviewForm } from "../reviews/ReviewForm";
 import { useMemo } from "react";
-
+import { Authorized } from "../authorized/Authorized";
 
 export function ReviewPage({ reviews, users, restaurantId }) {
   const reviewsWithUsers = useMemo(() => {
