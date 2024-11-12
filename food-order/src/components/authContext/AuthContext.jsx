@@ -1,31 +1,28 @@
 "use client";
 import { AuthContex } from ".";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useGetUsersQuery } from "../../redux/services/api/api";
 
 export function AuthContextProvider({ children }) {
-  const [userName, setUserName] = useState(null);
-  const userId = useRef(null);
+  const [user, setUser] = useState(null);
   const { isLoading, data: users } = useGetUsersQuery();
   if (isLoading) return;
   const login = () => {
     const name = prompt("Please, enter your name..", "");
-    const user = getUserByName(users, name);
-    if (user) {
-      setUserName(user.name);
-      userId.current = user.id;
+    const authUser = getUserByName(users, name);
+    if (authUser) {
+      setUser(authUser);
     }
   };
   const logout = () => {
-    setUserName(null);
-    userId.current = null;
+    setUser(null);
   };
   return (
     <AuthContex.Provider
       value={{
-        isAuthorized: userName !== null,
-        userName,
-        userId: userId.current,
+        isAuthorized: user !== null,
+        userName: user?.name,
+        userId: user?.id,
         login,
         logout,
       }}

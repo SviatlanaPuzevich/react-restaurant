@@ -3,19 +3,16 @@ import { useReviewForm } from "./ReviewFormReducer";
 import styles from "./reviews.module.css";
 import classNames from "classnames";
 import { Button } from "../ui-kit/Button";
-import { useAddReviewMutation } from "../../redux/services/api/api";
+import {
+  useAddReviewMutation,
+  useEditReviewMutation,
+} from "../../redux/services/api/api";
 import { useAuth } from "../authContext/useAuth";
 
-export function ReviewForm({ restaurantId }) {
+export function ReviewForm({ restaurantId, isEdit, initReview }) {
   const { userId } = useAuth();
-  const {
-    review,
-    clearReview,
-    handleSetUser,
-    handleSetText,
-    handleIncrease,
-    handleDecrease,
-  } = useReviewForm();
+  const { review, clearReview, handleSetText, handleIncrease, handleDecrease } =
+    useReviewForm(initReview);
   const [addReview, { isFetching, error }] = useAddReviewMutation();
   const handleSubmit = () => {
     addReview({
@@ -27,16 +24,26 @@ export function ReviewForm({ restaurantId }) {
       },
     });
   };
+  const [editReview] = useEditReviewMutation();
+  const handleEdit = () => {
+    editReview({
+      reviewId: review.id,
+      review: {
+        text: review.text,
+        userId: review.user.id,
+        rating: review.rating,
+      },
+      restaurantId,
+    });
+  };
+  if (isFetching) {
+    return "Reviws are updating...";
+  }
   return (
     <div className={styles.reviewCard}>
       <form onSubmit={(e) => e.preventDefault()}>
+        {isEdit && <p className={styles.user}>{review.user?.name}</p>}
         <div className={classNames(styles.formItem, styles.commentContainer)}>
-          <label className={styles.label}>Name:</label>
-          <input
-            className={styles.comment}
-            value={review.user}
-            onChange={handleSetUser}
-          />
           <label className={styles.label}>Comment:</label>
           <textarea
             className={styles.comment}
@@ -52,10 +59,10 @@ export function ReviewForm({ restaurantId }) {
         />
         <div className={styles.formItem}>
           <Button
-            text="Save"
+            text={isEdit ? "Edit" : "Save"}
             type="submit"
             className={styles.submitButton}
-            onClick={handleSubmit}
+            onClick={isEdit ? handleEdit : handleSubmit}
           />
           <Button
             text="Clear"

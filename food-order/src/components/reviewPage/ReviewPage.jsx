@@ -2,22 +2,21 @@
 
 import { Review } from "../reviews/Review";
 import { ReviewForm } from "../reviews/ReviewForm";
+import { useMemo } from "react";
 import { Authorized } from "../authorized/Authorized";
-import { useAuth } from "../authContext/useAuth";
-import { EditableReview } from "../reviews/EditableReview";
 
 export function ReviewPage({ reviews, users, restaurantId }) {
-  const { userId } = useAuth();
-  const reviewsWithUsers = addUserToReview(reviews, users);
+  const reviewsWithUsers = useMemo(() => {
+    return addUserToReview(reviews, users);
+  }, [reviews, users]);
   const header = reviews.length ? "Reviews" : "No reviews";
+
   return (
     <>
       <h3>{header}</h3>
       {reviewsWithUsers.map((review) => {
-        return userId === review.user?.id ? (
-          <EditableReview key={review.id} review={review} />
-        ) : (
-          <Review key={review.id} review={review} />
+        return (
+          <Review key={review.id} review={review} restaurantId={restaurantId} />
         );
       })}
       <Authorized>
